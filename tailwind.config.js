@@ -4,6 +4,9 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 module.exports = withMT({
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
+    fontFamily: {
+      noto: ["Noto Sans JP", "sans-serif"],
+    },
     extend: {
       colors: {
         "accent-1": "#FAFAFA",
