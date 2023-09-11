@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  IconButton,
-} from "../components/style";
+import { Navbar, MobileNav, Typography, IconButton } from "../components/style";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -26,29 +20,28 @@ const Header = () => {
         color="blue"
         className="p-1 hover:opacity-50 text-lg text-[#DDE6ED]"
       >
-        <a href="#" className="flex items-center font-bold">
+        <Link href="/" className="flex items-center font-bold">
           Home
-        </a>
+        </Link>
       </Typography>
-      <div className="border border-gray w-full sm:hidden"></div>
       <Typography
         as="li"
         variant="small"
         color="blue"
         className="p-1 text-[#DDE6ED] hover:opacity-50"
       >
-        <a href="#" className="flex items-center text-lg font-bold ">
+        <Link href="/prof" className="flex items-center text-lg font-bold ">
           Prof
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
         variant="small"
         className="text-[#DDE6ED] p-1 hover:opacity-50"
       >
-        <a href="#" className="flex items-center text-lg font-bold">
+        <Link href="/dev" className="flex items-center text-lg font-bold">
           Dev
-        </a>
+        </Link>
       </Typography>
     </ul>
   );
@@ -59,9 +52,11 @@ const Header = () => {
         <Typography
           as="a"
           href="/"
-          className="text-[#DDE6ED] font-bold mr-4 text-lg cursor-pointer py-1.5"
+          className="text-[#DDE6ED] font-bold mr-4 sm:text-lg cursor-pointer py-1.5"
         >
-          ネトゲ廃人からエンジニアに転生した人のブログ
+          ネトゲ廃人からエンジニアに
+          <br className="sm:hidden" />
+          転生した人のブログ
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>

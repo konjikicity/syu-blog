@@ -1,12 +1,12 @@
-import { parseISO, format } from 'date-fns'
+import moment from "moment";
 
 type Props = {
-  dateString: string
-}
+  dateString: string;
+};
 
 const DateFormatter = ({ dateString }: Props) => {
-  const date = parseISO(dateString)
-  return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>
-}
+  const date = moment(dateString).format("YYYY年MM月DD日");
+  return <time>{date}</time>;
+};
 
-export default DateFormatter
+export default DateFormatter;

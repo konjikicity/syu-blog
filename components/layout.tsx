@@ -1,5 +1,7 @@
 import Footer from "./footer";
 import Meta from "./meta";
+import Head from "next/head";
+import Header from "../components/header";
 
 type Props = {
   preview?: boolean;
@@ -9,7 +11,11 @@ type Props = {
 const Layout = ({ children }: Props) => {
   return (
     <>
-      <Meta />
+      <Head>
+        <title>{`ネトゲ廃人からエンジニアに転生したブログ`}</title>
+        <Meta />
+      </Head>
+      <Header />
       <div className="min-h-screen">
         <main>{children}</main>
       </div>
