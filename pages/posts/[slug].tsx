@@ -6,9 +6,10 @@ import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
-import { CMS_NAME } from "../../lib/constants";
 import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
+import { useEffect } from "react";
+import initTwitterScriptInner from "zenn-embed-elements/lib/init-twitter-script-inner";
 
 type Props = {
   post: PostType;
@@ -21,8 +22,18 @@ export default function Post({ post, preview }: Props) {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
+  useEffect(() => {
+    import("zenn-embed-elements");
+  }, []);
+
   return (
     <Layout preview={preview}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: initTwitterScriptInner,
+        }}
+      />
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -31,9 +42,8 @@ export default function Post({ post, preview }: Props) {
             <article className="mb-32">
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
                 date={post.date}
-                author={post.author}
+                tags={post.tags}
               />
               <PostBody content={post.content} />
             </article>
@@ -55,10 +65,8 @@ export async function getStaticProps({ params }: Params) {
     "title",
     "date",
     "slug",
-    "author",
     "content",
-    "ogImage",
-    "coverImage",
+    "tags",
   ]);
   const content = await markdownToHtml(post.content || "");
 
