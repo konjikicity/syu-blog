@@ -1,9 +1,9 @@
 import { getAllTags, getPostsByTag } from "../../lib/api";
 import Post from "../../interfaces/post";
-import Head from "next/head";
 import Layout from "../../components/layout";
 import Container from "../../components/container";
 import MoreStories from "../../components/more-stories";
+import TagStyle from "../../components/tag-style";
 
 type Props = {
   posts: Post[];
@@ -14,10 +14,11 @@ export default function Index({ posts, tag }: Props) {
   return (
     <>
       <Layout>
-        <Head>
-          <title>Tag: {tag}</title>
-        </Head>
         <Container>
+          <div className="mt-12 w-1/2 flex items-center justify-start">
+            <TagStyle tag={tag} />
+            <p className="pl-2 font-bold text-lg">を含む記事一覧</p>
+          </div>
           <MoreStories posts={posts} />
         </Container>
       </Layout>

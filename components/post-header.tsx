@@ -1,5 +1,6 @@
 import DateFormatter from "./date-formatter";
 import PostTitle from "./post-title";
+import TagStyle from "./tag-style";
 
 type Props = {
   title: string;
@@ -15,7 +16,7 @@ const PostHeader = ({ title, date, tags }: Props) => {
         <ul className="flex gap-x-2">
           {tags.map((tag) => (
             <li className="font-bold mb-12">
-              <a href={`/tags/${tag}`}>{tag}</a>
+              <TagStyle tag={tag} />
             </li>
           ))}
         </ul>

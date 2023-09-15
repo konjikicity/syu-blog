@@ -1,6 +1,5 @@
 import Container from "./container";
 import { Typography, IconButton } from "../components/style";
-import { EXAMPLE_PATH } from "../lib/constants";
 
 const Footer = () => {
   return (

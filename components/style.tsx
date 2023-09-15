@@ -8,7 +8,7 @@ import {
   CardFooter,
   Typography,
   Navbar,
-  MobileNav,
+  Collapse,
   IconButton,
 } from "@material-tailwind/react";
 export {
@@ -19,6 +19,6 @@ export {
   CardFooter,
   Typography,
   Navbar,
-  MobileNav,
+  Collapse,
   IconButton,
 };

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Navbar, MobileNav, Typography, IconButton } from "../components/style";
+import { Navbar, Collapse, Typography, IconButton } from "../components/style";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -99,7 +99,7 @@ const Header = () => {
           </IconButton>
         </div>
       </div>
-      <MobileNav open={openNav}>{navList}</MobileNav>
+      <Collapse open={openNav}>{navList}</Collapse>
     </Navbar>
   );
 };
