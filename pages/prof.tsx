@@ -4,10 +4,12 @@ import Profile from "../components/profile";
 
 export default function Prof() {
   return (
-    <Layout>
-      <Container>
-        <Profile />
-      </Container>
-    </Layout>
+    <>
+      <Layout>
+        <Container>
+          <Profile />
+        </Container>
+      </Layout>
+    </>
   );
 }
