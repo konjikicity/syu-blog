@@ -5,7 +5,7 @@ import avaterImage from "../public/assets/blog/authors/syu.png";
 const Profile = () => {
   return (
     <>
-      <div className="text-white mt-12  mb-32 flex justify-center">
+      <div className="text-white my-12 flex justify-center">
         <Card className="w-full text-[#DDE6ED] bg-[#27374D] justify-between p-4">
           <CardBody>
             <div>

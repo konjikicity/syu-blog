@@ -8,24 +8,18 @@ type Props = {
   tags: string[];
 };
 
-const PostHeader = ({ title, date, tags }: Props) => {
+const PostHeader = ({ title, tags }: Props) => {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="max-w-2xl mx-auto text-">
-        <ul className="flex gap-x-2">
-          {tags.map((tag) => (
-            <li className="font-bold mb-12">
-              <TagStyle tag={tag} />
-            </li>
-          ))}
-        </ul>
-
-        <div className="mb-6 text-lg text-[#DDE6ED]">
-          <DateFormatter dateString={date} />
-        </div>
-      </div>
-    </>
+    <div className="text-center">
+      <p className="text-4xl text-white font-bold">{title}</p>
+      <ul className="flex items-center gap-x-2 sm:px-20">
+        {tags.map((tag) => (
+          <li className="font-bold py-6">
+            <TagStyle tag={tag} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

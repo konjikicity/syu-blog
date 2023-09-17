@@ -10,6 +10,16 @@ import markdownToHtml from "../../lib/markdownToHtml";
 import type PostType from "../../interfaces/post";
 import { useEffect } from "react";
 import initTwitterScriptInner from "zenn-embed-elements/lib/init-twitter-script-inner";
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  LineShareButton,
+  HatenaShareButton,
+  TwitterIcon,
+  FacebookIcon,
+  LineIcon,
+  HatenaIcon,
+} from "react-share";
 
 type Props = {
   post: PostType;
@@ -35,20 +45,54 @@ export default function Post({ post, preview }: Props) {
         }}
       />
       <Container>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              <PostHeader
-                title={post.title}
-                date={post.date}
-                tags={post.tags}
-              />
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
+        <div className="bg-[#27374D] rounded-lg my-6 p-12">
+          {router.isFallback ? (
+            <PostTitle>Loading…</PostTitle>
+          ) : (
+            <>
+              <article>
+                <PostHeader
+                  title={post.title}
+                  date={post.date}
+                  tags={post.tags}
+                />
+                <PostBody content={post.content} />
+              </article>
+            </>
+          )}
+        </div>
+        <div className="flex justify-end">
+          <TwitterShareButton
+            url="https://syu-blog.vercel.app/"
+            title={post.title}
+            className="mr-4"
+          >
+            <TwitterIcon size={40} round={true} />
+          </TwitterShareButton>
+
+          <FacebookShareButton
+            url="https://syu-blog.vercel.app/"
+            quote={post.title}
+            className="mr-4"
+          >
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
+
+          <LineShareButton
+            url="https://syu-blog.vercel.app/"
+            title={post.title}
+            className="mr-4"
+          >
+            <LineIcon size={40} round={true} />
+          </LineShareButton>
+
+          <HatenaShareButton
+            url="https://syu-blog.vercel.app/"
+            title={post.title}
+          >
+            <HatenaIcon size={40} round={true} />
+          </HatenaShareButton>
+        </div>
       </Container>
     </Layout>
   );
