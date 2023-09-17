@@ -36,7 +36,7 @@ const checkTagImgUrl = (tag: string): React.ReactNode => {
       <i className="mr-2 devicon-amazonwebservices-plain-wordmark colored"></i>
     ),
     git: <i className="mr-2 devicon-git-plain colored"></i>,
-    devTool: <i class="mr-2 fa-solid fa-screwdriver-wrench"></i>,
+    devTool: <i className="mr-2 fa-solid fa-screwdriver-wrench"></i>,
   };
 
   return tagElements[tag] || null;
