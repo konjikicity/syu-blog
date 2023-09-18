@@ -11,7 +11,7 @@ type Props = {
 const PostHeader = ({ title, tags }: Props) => {
   return (
     <div className="text-center">
-      <p className="text-4xl text-white font-bold">{title}</p>
+      <p className="text-2xl sm:text-4xl text-white font-bold">{title}</p>
       <ul className="flex items-center gap-x-2 sm:px-20">
         {tags.map((tag) => (
           <li className="font-bold py-6">

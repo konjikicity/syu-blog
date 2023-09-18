@@ -45,7 +45,7 @@ export default function Post({ post, preview }: Props) {
         }}
       />
       <Container>
-        <div className="bg-[#27374D] rounded-lg my-6 p-12">
+        <div className="bg-[#27374D] rounded-lg p-4 my-4 sm:my-6 sm:p-12">
           {router.isFallback ? (
             <PostTitle>Loading…</PostTitle>
           ) : (

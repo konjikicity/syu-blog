@@ -14,7 +14,7 @@ const MoreStories = ({ posts, currentPage }: Props) => {
 
   return (
     <section>
-      <div className="my-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
+      <div className="sm:my-12 my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
         {currentPosts.map((post) => (
           <PostPreview
             key={post.slug}

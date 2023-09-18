@@ -5,8 +5,8 @@ import avaterImage from "../public/assets/blog/authors/syu.png";
 const Profile = () => {
   return (
     <>
-      <div className="text-white my-12 flex justify-center">
-        <Card className="w-full text-[#DDE6ED] bg-[#27374D] justify-between p-4">
+      <div className="text-white mt-4 mb-12 sm:my-12 mx-auto">
+        <Card className="w-full text-[#DDE6ED] bg-[#27374D] sm:p-4">
           <CardBody>
             <div>
               <div className="flex items-center font-bold pb-6">
@@ -23,17 +23,17 @@ const Profile = () => {
               <div className="border border-gray-700"></div>
               <div className="flex items-center py-6">
                 <p className="text-lg font-bold w-1/3">Account</p>
-                <div>
+                <div className="mx-auto sm:mx-0 flex items-center sm:block">
                   <a
                     href="https://twitter.com/konjikicity"
-                    className="block text-blue-500 hover:underline hover:opacity-50"
+                    className="block mr-2 sm:mr-0 text-blue-500 hover:underline hover:opacity-50"
                     target="_blank"
                   >
                     Twitter
                   </a>
                   <a
                     href="https://github.com/konjikicity"
-                    className="mt-1 block text-blue-500 hover:underline hover:opacity-50"
+                    className="sm:mt-1 block text-blue-500 hover:underline hover:opacity-50"
                     target="_blank"
                   >
                     Github
@@ -43,11 +43,11 @@ const Profile = () => {
               <div className="border border-gray-700"></div>
               <div className="flex items-center py-6">
                 <p className="text-lg font-bold w-1/3">Job</p>
-                <p>Web Engineer</p>
+                <p className="block mx-auto sm:mx-0">Web Engineer</p>
               </div>
               <div className="border border-gray-700"></div>
-              <div className="flex items-center py-6">
-                <p className="text-lg font-bold w-1/3">About</p>
+              <div className="sm:flex sm:items-center py-6">
+                <p className="text-lg font-bold w-1/3 pb-4 sm:pb-0">About</p>
                 <div className="flex flex-col">
                   <p>ネトゲ廃人→飲食店勤務→Web Engineer</p>
                   <p className="mt-4">リモートでWeb Engineerとして勤務中</p>
@@ -57,10 +57,12 @@ const Profile = () => {
                 </div>
               </div>
               <div className="border border-gray-700"></div>
-              <div className="flex items-center py-6">
-                <p className="text-lg font-bold w-1/3">Experience</p>
+              <div className="sm:flex sm:items-center py-6">
+                <p className="text-lg font-bold w-1/3 pb-4 sm:pb-0">
+                  Experience
+                </p>
                 <div className="flex flex-col">
-                  <p className="text-lg font-bold w-1/3">Languege</p>
+                  <p className="text-lg font-medium w-1/3">Languege</p>
                   <div className="flex items-center">
                     <img
                       className="mt-2 mr-4 h-14 w-14"
@@ -71,7 +73,7 @@ const Profile = () => {
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg"
                     />
                   </div>
-                  <p className="mt-6 text-lg font-bold w-1/3">Backend</p>
+                  <p className="mt-6 text-lg font-medium w-1/3">Backend</p>
                   <div className="flex items-center">
                     <img
                       className="mt-2 mr-4 h-14 w-14"
@@ -82,7 +84,7 @@ const Profile = () => {
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain-wordmark.svg"
                     />
                   </div>
-                  <p className="mt-6 text-lg font-bold w-1/3">Frontend</p>
+                  <p className="mt-6 text-lg font-medium w-1/3">Frontend</p>
                   <div className="flex items-center">
                     <img
                       className="mr-4 mt-2 h-14 w-14"
@@ -97,7 +99,7 @@ const Profile = () => {
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                     />
                   </div>
-                  <p className="mt-6 text-lg font-bold w-1/3">DevTool</p>
+                  <p className="mt-6 text-lg font-medium w-1/3">DevTool</p>
                   <div className="flex items-center">
                     <img
                       className="mt-2 mr-4 h-14 w-14"
@@ -119,7 +121,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className="border border-gray-700"></div>
-              <div className="flex items-center mt-6">
+              <div className="sm:flex sm:items-center mt-6">
                 <p className="text-lg font-bold w-1/3">Articles</p>
                 <div className="flex flex-col">
                   <a

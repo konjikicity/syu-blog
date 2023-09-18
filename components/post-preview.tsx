@@ -28,8 +28,10 @@ const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags }) => {
             {title}
           </Typography>
         </Link>
-        <div className="mt-auto flex justify-between">
-          <ul className="flex gap-x-2 items-end">{renderedTags}</ul>
+        <div className="mt-auto sm:flex justify-between">
+          <ul className="flex gap-x-2 items-end mb-2 sm:mb-0">
+            {renderedTags}
+          </ul>
           <DateFormatter dateString={date} />
         </div>
       </CardBody>

@@ -15,7 +15,7 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <Image className="h-72" src={devRunteQ} alt="runteq" />
+            <Image className="h-52 sm:h-72" src={devRunteQ} alt="runteq" />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
@@ -39,7 +39,7 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <Image className="h-72" src={devBoitore} alt="boitre" />
+            <Image className="h-52 sm:h-72" src={devBoitore} alt="boitre" />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
