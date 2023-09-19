@@ -26,14 +26,14 @@ const Profile = () => {
                 <div className="mx-auto sm:mx-0 flex items-center sm:block">
                   <a
                     href="https://twitter.com/konjikicity"
-                    className="block mr-2 sm:mr-0 text-blue-500 hover:underline hover:opacity-50"
+                    className="block mr-2 transition sm:mr-0 text-blue-500 hover:underline hover:opacity-50"
                     target="_blank"
                   >
                     Twitter
                   </a>
                   <a
                     href="https://github.com/konjikicity"
-                    className="sm:mt-1 block text-blue-500 hover:underline hover:opacity-50"
+                    className="sm:mt-1 block transition text-blue-500 hover:underline hover:opacity-50"
                     target="_blank"
                   >
                     Github
@@ -126,14 +126,14 @@ const Profile = () => {
                 <div className="flex flex-col">
                   <a
                     href="https://note.com/konjikicity/n/n64442baaa971"
-                    className="mb-4 text-blue-500 hover:underline hover:opacity-50"
+                    className="mb-4 text-blue-500 transition hover:underline hover:opacity-50"
                     target="_blank"
                   >
                     ネトゲ廃人で引きこもりだった僕がエンジニアになるまで
                   </a>
                   <a
                     href="https://qiita.com/konjikicity/items/005cda4b9248803efa7e"
-                    className="text-blue-500 hover:underline hover:opacity-50"
+                    className="text-blue-500 hover:underline transition hover:opacity-50"
                     target="_blank"
                   >
                     【個人開発】母音法を広めたい！劇団四季も使っている『母音法』で発声練習ができるサービス『BOIトレ

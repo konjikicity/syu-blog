@@ -18,7 +18,7 @@ const Header = () => {
         as="li"
         variant="small"
         color="blue"
-        className="p-1 hover:opacity-50 text-lg text-[#DDE6ED]"
+        className="p-1 hover:opacity-50 transition text-lg text-[#DDE6ED]"
       >
         <Link href="/" className="flex items-center font-bold">
           Home
@@ -28,7 +28,7 @@ const Header = () => {
         as="li"
         variant="small"
         color="blue"
-        className="p-1 text-[#DDE6ED] hover:opacity-50"
+        className="p-1 text-[#DDE6ED] transition hover:opacity-50"
       >
         <Link href="/prof" className="flex items-center text-lg font-bold ">
           Prof
@@ -37,7 +37,7 @@ const Header = () => {
       <Typography
         as="li"
         variant="small"
-        className="text-[#DDE6ED] p-1 hover:opacity-50"
+        className="text-[#DDE6ED] p-1 transition hover:opacity-50"
       >
         <Link href="/dev" className="flex items-center text-lg font-bold">
           Dev

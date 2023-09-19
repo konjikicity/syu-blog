@@ -14,7 +14,7 @@ const TagStyle: React.FC<TagProps> = ({ tag }) => {
   return (
     <a
       href={`/tags/${tag}`}
-      className="px-2 py-1 rounded-lg bg-black font-bold text-white flex items-center justify-between hover:opacity-50"
+      className="px-2 py-1 rounded-lg bg-black font-bold text-white transition flex items-center justify-between hover:opacity-50"
     >
       {tagElement}
       {tag}
@@ -37,6 +37,7 @@ const checkTagImgUrl = (tag: string): React.ReactNode => {
     ),
     git: <i className="mr-2 devicon-git-plain colored"></i>,
     devTool: <i className="mr-2 fa-solid fa-screwdriver-wrench"></i>,
+    日記: <i className="mr-2 fa-solid fa-book"></i>,
   };
 
   return tagElements[tag] || null;

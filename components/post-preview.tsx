@@ -24,7 +24,7 @@ const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags }) => {
     <Card className="text-[#DDE6ED] bg-[#27374D] h-52">
       <CardBody className="w-full h-full flex flex-col justify-between">
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <Typography className="text-xl font-bold hover:transform hover:scale-110 hover:duration-1000">
+          <Typography className="text-xl font-bold transition hover:transform hover:scale-110 hover:duration-1000">
             {title}
           </Typography>
         </Link>
