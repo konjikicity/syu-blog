@@ -6,10 +6,9 @@ import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
 import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
-import markdownToHtml from "../../lib/markdownToHtml";
+import markdownToHtml from "zenn-markdown-html";
 import type PostType from "../../interfaces/post";
-import { useEffect } from "react";
-import initTwitterScriptInner from "zenn-embed-elements/lib/init-twitter-script-inner";
+
 import {
   TwitterShareButton,
   FacebookShareButton,
@@ -33,17 +32,8 @@ export default function Post({ post, preview }: Props) {
     return <ErrorPage statusCode={404} />;
   }
 
-  useEffect(() => {
-    import("zenn-embed-elements");
-  }, []);
-
   return (
     <Layout preview={preview}>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: initTwitterScriptInner,
-        }}
-      />
       <Container>
         <div className="bg-[#27374D] rounded-lg p-4 my-4 sm:my-6 sm:p-12">
           {router.isFallback ? (
@@ -112,7 +102,9 @@ export async function getStaticProps({ params }: Params) {
     "content",
     "tags",
   ]);
-  const content = await markdownToHtml(post.content || "");
+  const content = await markdownToHtml(post.content || "", {
+    embedOrigin: "https://embed.zenn.studio",
+  });
 
   return {
     props: {
