@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ErrorPage from "next/error";
 import PostContainer from "../../components/post-container";
 import PostBody from "../../components/post-body";
@@ -28,11 +28,13 @@ type Props = {
   preview?: boolean;
 };
 
-export default function Post({ post, preview }: Props) {
+export default function Post({ post }: Props) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
     tocbot.init({
@@ -47,7 +49,7 @@ export default function Post({ post, preview }: Props) {
   }, []);
 
   return (
-    <Layout preview={preview}>
+    <Layout title={post.title} date={post.date}>
       <PostContainer>
         <div className="relative xl:grid xl:grid-cols-10 xl:gap-3">
           <div className="bg-[#27374D] xl:col-span-8 rounded-lg p-4 my-4 sm:my-6 sm:p-12">
@@ -66,14 +68,14 @@ export default function Post({ post, preview }: Props) {
               </>
             )}
           </div>
-          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit md:hidden xl:block">
+          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit hidden xl:block">
             目次
             <nav className="mt-4 toc" />
           </div>
 
-          <div className="flex">
+          <div className="flex justify-center sm:justify-start">
             <TwitterShareButton
-              url="https://syu-blog.vercel.app/"
+              url={`${baseUrl}/posts/${post.title}`}
               title={post.title}
               className="mr-4"
             >
@@ -81,7 +83,7 @@ export default function Post({ post, preview }: Props) {
             </TwitterShareButton>
 
             <FacebookShareButton
-              url="https://syu-blog.vercel.app/"
+              url={`${baseUrl}/posts/${post.title}`}
               quote={post.title}
               className="mr-4"
             >
@@ -89,7 +91,7 @@ export default function Post({ post, preview }: Props) {
             </FacebookShareButton>
 
             <LineShareButton
-              url="https://syu-blog.vercel.app/"
+              url={`${baseUrl}/posts/${post.title}`}
               title={post.title}
               className="mr-4"
             >
@@ -97,7 +99,7 @@ export default function Post({ post, preview }: Props) {
             </LineShareButton>
 
             <HatenaShareButton
-              url="https://syu-blog.vercel.app/"
+              url={`${baseUrl}/posts/${post.title}`}
               title={post.title}
             >
               <HatenaIcon size={40} round={true} />

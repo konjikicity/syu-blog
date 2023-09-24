@@ -54,9 +54,7 @@ const Header = () => {
           href="/"
           className="text-[#DDE6ED] font-bold mr-4 sm:text-lg cursor-pointer py-1.5"
         >
-          ネトゲ廃人からエンジニアに
-          <br className="sm:hidden" />
-          転生した人のブログ
+          ネトゲ廃人からエンジニアブログ
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>

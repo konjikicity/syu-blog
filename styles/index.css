@@ -3,13 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Noto Sans JP", sans-serif !important;
 }
 
-.znc code {
-  background: #333 !important;
-}
-
+.znc code,
 .znc pre {
   background: #333 !important;
 }
@@ -28,13 +25,13 @@ body {
 }
 
 .toc a {
+  &.is-active-link {
+    text-decoration: underline;
+  }
+
   &:hover {
     text-decoration: underline;
   }
-}
-
-.toc a.is-active-link {
-  text-decoration: underline;
 }
 
 .toc ol {

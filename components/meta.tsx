@@ -1,6 +1,10 @@
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "../lib/constants";
+type Props = {
+  title: string;
+  date: string;
+};
 
-const Meta = () => {
+const Meta = ({ title, date }: Props) => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   return (
     <>
       <link
@@ -33,7 +37,7 @@ const Meta = () => {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap"
         rel="stylesheet"
       />
       <link
@@ -46,10 +50,18 @@ const Meta = () => {
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
-        name="description"
-        content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
+        property="og:image"
+        content={
+          title && date
+            ? `${baseUrl}/api/og?title=${title}&date=${date}`
+            : `${baseUrl}/api/og`
+        }
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="og:title" content={title} />
+      <meta property="og:url" content={`${baseUrl}/posts/${title}`} />
+      <meta property="og:site_name" content="ネトゲ廃人からエンジニアブログ" />
+      <meta property="og:type" content="blog" />
     </>
   );
 };

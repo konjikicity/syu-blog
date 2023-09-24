@@ -4,16 +4,17 @@ import Head from "next/head";
 import Header from "../components/header";
 
 type Props = {
-  preview?: boolean;
   children: React.ReactNode;
+  title: string;
+  date: string;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, title, date }: Props) => {
   return (
     <>
       <Head>
-        <title>{`ネトゲ廃人からエンジニアに転生したブログ`}</title>
-        <Meta />
+        <title>{title}</title>
+        <Meta title={title} date={date} />
       </Head>
       <Header />
       <div className="min-h-screen mb-12">
