@@ -5,8 +5,8 @@ import Header from "../components/header";
 
 type Props = {
   children: React.ReactNode;
-  title: string;
-  date: string;
+  title?: string;
+  date?: string;
 };
 
 const Layout = ({ children, title, date }: Props) => {
