@@ -185,7 +185,7 @@ export default function Document() {
 ```
 
 以上でblog-starterでzennのmarkdownが使用可能になりました。
-:::message
+:::message alert
 リンクの埋め込みは非商用利用のみなので注意してください
 :::
 

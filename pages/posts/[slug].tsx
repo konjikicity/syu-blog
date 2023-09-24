@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
+import PostContainer from "../../components/post-container";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
@@ -8,6 +9,7 @@ import { getPostBySlug, getAllPosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import markdownToHtml from "zenn-markdown-html";
 import type PostType from "../../interfaces/post";
+import tocbot from "tocbot";
 
 import {
   TwitterShareButton,
@@ -32,58 +34,77 @@ export default function Post({ post, preview }: Props) {
     return <ErrorPage statusCode={404} />;
   }
 
+  useEffect(() => {
+    tocbot.init({
+      tocSelector: ".toc",
+      contentSelector: ".body",
+      headingSelector: "h2, h3",
+      headingsOffset: 100,
+      scrollSmoothOffset: -100,
+    });
+
+    return () => tocbot.destroy();
+  }, []);
+
   return (
     <Layout preview={preview}>
-      <Container>
-        <div className="bg-[#27374D] rounded-lg p-4 my-4 sm:my-6 sm:p-12">
-          {router.isFallback ? (
-            <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article>
-                <PostHeader
-                  title={post.title}
-                  date={post.date}
-                  tags={post.tags}
-                />
-                <PostBody content={post.content} />
-              </article>
-            </>
-          )}
+      <PostContainer>
+        <div className="relative xl:grid xl:grid-cols-10 xl:gap-3">
+          <div className="bg-[#27374D] xl:col-span-8 rounded-lg p-4 my-4 sm:my-6 sm:p-12">
+            {router.isFallback ? (
+              <PostTitle>Loading…</PostTitle>
+            ) : (
+              <>
+                <article>
+                  <PostHeader
+                    title={post.title}
+                    date={post.date}
+                    tags={post.tags}
+                  />
+                  <PostBody content={post.content} />
+                </article>
+              </>
+            )}
+          </div>
+          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit md:hidden xl:block">
+            目次
+            <nav className="mt-4 toc" />
+          </div>
+
+          <div className="flex">
+            <TwitterShareButton
+              url="https://syu-blog.vercel.app/"
+              title={post.title}
+              className="mr-4"
+            >
+              <TwitterIcon size={40} round={true} />
+            </TwitterShareButton>
+
+            <FacebookShareButton
+              url="https://syu-blog.vercel.app/"
+              quote={post.title}
+              className="mr-4"
+            >
+              <FacebookIcon size={40} round={true} />
+            </FacebookShareButton>
+
+            <LineShareButton
+              url="https://syu-blog.vercel.app/"
+              title={post.title}
+              className="mr-4"
+            >
+              <LineIcon size={40} round={true} />
+            </LineShareButton>
+
+            <HatenaShareButton
+              url="https://syu-blog.vercel.app/"
+              title={post.title}
+            >
+              <HatenaIcon size={40} round={true} />
+            </HatenaShareButton>
+          </div>
         </div>
-        <div className="flex justify-end">
-          <TwitterShareButton
-            url="https://syu-blog.vercel.app/"
-            title={post.title}
-            className="mr-4"
-          >
-            <TwitterIcon size={40} round={true} />
-          </TwitterShareButton>
-
-          <FacebookShareButton
-            url="https://syu-blog.vercel.app/"
-            quote={post.title}
-            className="mr-4"
-          >
-            <FacebookIcon size={40} round={true} />
-          </FacebookShareButton>
-
-          <LineShareButton
-            url="https://syu-blog.vercel.app/"
-            title={post.title}
-            className="mr-4"
-          >
-            <LineIcon size={40} round={true} />
-          </LineShareButton>
-
-          <HatenaShareButton
-            url="https://syu-blog.vercel.app/"
-            title={post.title}
-          >
-            <HatenaIcon size={40} round={true} />
-          </HatenaShareButton>
-        </div>
-      </Container>
+      </PostContainer>
     </Layout>
   );
 }

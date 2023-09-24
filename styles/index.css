@@ -5,3 +5,49 @@
 body {
   font-family: "Roboto", sans-serif !important;
 }
+
+.znc code {
+  background: #333 !important;
+}
+
+.znc pre {
+  background: #333 !important;
+}
+
+.toc ol > li {
+  list-style: decimal;
+  padding-left: 0.2em;
+}
+
+.toc {
+  line-height: 1.9;
+}
+
+.toc > *:first-child {
+  margin-top: 0;
+}
+
+.toc a {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.toc a.is-active-link {
+  text-decoration: underline;
+}
+
+.toc ol {
+  padding-left: 1.7em;
+}
+
+.toc ul,
+.toc ol {
+  margin: 1.4rem 0;
+  line-height: 1.7;
+}
+
+.toc ul > li,
+.toc ol > li {
+  margin: 0.4rem 0;
+}
