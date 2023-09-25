@@ -6,15 +6,14 @@ import Header from "../components/header";
 type Props = {
   children: React.ReactNode;
   title?: string;
-  date?: string;
 };
 
-const Layout = ({ children, title, date }: Props) => {
+const Layout = ({ children, title }: Props) => {
   return (
     <>
       <Head>
         <title>{title}</title>
-        <Meta title={title} date={date} />
+        <Meta title={title} />
       </Head>
       <Header />
       <div className="min-h-screen mb-12">

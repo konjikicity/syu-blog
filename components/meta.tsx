@@ -1,9 +1,8 @@
 type Props = {
-  title: string;
-  date: string;
+  title?: string;
 };
 
-const Meta = ({ title, date }: Props) => {
+const Meta = ({ title }: Props) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   return (
     <>
@@ -52,10 +51,12 @@ const Meta = ({ title, date }: Props) => {
       <meta
         property="og:image"
         content={
-          title && date
-            ? `${baseUrl}/api/og?title=${title}&date=${date}`
-            : `${baseUrl}/api/og`
+          title ? `${baseUrl}/api/og?title=${title}` : `${baseUrl}/api/og`
         }
+      />
+      <meta
+        property="og:description"
+        content="ネトゲ廃人からエンジニアブログ"
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="og:title" content={title} />

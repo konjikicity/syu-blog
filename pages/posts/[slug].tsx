@@ -49,7 +49,7 @@ export default function Post({ post }: Props) {
   }, []);
 
   return (
-    <Layout title={post.title} date={post.date}>
+    <Layout title={post.title}>
       <PostContainer>
         <div className="relative xl:grid xl:grid-cols-10 xl:gap-3">
           <div className="bg-[#27374D] xl:col-span-8 rounded-lg p-4 my-4 sm:my-6 sm:p-12">
@@ -75,7 +75,7 @@ export default function Post({ post }: Props) {
 
           <div className="flex justify-center sm:justify-start">
             <TwitterShareButton
-              url={`${baseUrl}/posts/${post.title}`}
+              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
               title={post.title}
               className="mr-4"
             >
@@ -83,7 +83,7 @@ export default function Post({ post }: Props) {
             </TwitterShareButton>
 
             <FacebookShareButton
-              url={`${baseUrl}/posts/${post.title}`}
+              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
               quote={post.title}
               className="mr-4"
             >
@@ -91,7 +91,7 @@ export default function Post({ post }: Props) {
             </FacebookShareButton>
 
             <LineShareButton
-              url={`${baseUrl}/posts/${post.title}`}
+              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
               title={post.title}
               className="mr-4"
             >
@@ -99,7 +99,7 @@ export default function Post({ post }: Props) {
             </LineShareButton>
 
             <HatenaShareButton
-              url={`${baseUrl}/posts/${post.title}`}
+              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
               title={post.title}
             >
               <HatenaIcon size={40} round={true} />
