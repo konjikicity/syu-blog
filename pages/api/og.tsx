@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { ImageResponse } from "@vercel/og";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 const font = fetch(
@@ -78,13 +78,6 @@ export default async function ogp(req: NextRequest) {
               alignItems: "center",
             }}
           >
-            <img
-              src={`https://github.com/konjikicity.png`}
-              alt=""
-              width="60"
-              height="60"
-              style={{ borderRadius: 60, marginRight: 10 }}
-            />
             <h2
               style={{
                 color: "white",
