@@ -1,6 +1,4 @@
 import { Card, CardBody } from "../components/style";
-import Image from "next/image";
-import avaterImage from "../public/assets/blog/authors/syu.png";
 
 const Profile = () => {
   return (
@@ -10,9 +8,9 @@ const Profile = () => {
           <CardBody>
             <div>
               <div className="flex items-center font-bold pb-6">
-                <Image
+                <img
                   className="mr-4 h-14 w-14"
-                  src={avaterImage}
+                  src={`https://res.cloudinary.com/dzlhvpfmo/image/upload/v1695559567/syu-blog/syu_dyduwv.png`}
                   alt="開発者画像"
                 />
                 <div className="flex flex-col">

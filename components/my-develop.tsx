@@ -1,6 +1,3 @@
-import Image from "next/image";
-import devRunteQ from "../public/assets/blog/dev/RUNTEQ-Q-A.png";
-import devBoitore from "../public/assets/blog/dev/boitore.png";
 import Link from "next/link";
 import { Card, CardBody, CardHeader, Typography } from "../components/style";
 
@@ -15,7 +12,11 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <Image className="h-52 sm:h-72" src={devRunteQ} alt="runteq" />
+            <img
+              className="h-52 sm:h-72"
+              src={`https://res.cloudinary.com/dzlhvpfmo/image/upload/v1695657278/syu-blog/RUNTEQ-Q-A_bxuudv.png`}
+              alt="runteq"
+            />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
@@ -39,7 +40,11 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <Image className="h-52 sm:h-72" src={devBoitore} alt="boitre" />
+            <img
+              className="h-52 sm:h-72"
+              src={`https://res.cloudinary.com/dzlhvpfmo/image/upload/v1695657284/syu-blog/boitore_d1whcv.png`}
+              alt="boitre"
+            />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
