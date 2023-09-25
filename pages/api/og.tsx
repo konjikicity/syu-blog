@@ -6,7 +6,7 @@ export const config = {
 };
 
 const font = fetch(
-  new URL("../../public/font/NotoSansJP-Bold.ttf", import.meta.url),
+  new URL("../../public/font/NotoSansJP-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export default async function ogp(req: NextRequest) {
@@ -78,6 +78,13 @@ export default async function ogp(req: NextRequest) {
               alignItems: "center",
             }}
           >
+            <img
+              src={`https://github.com/konjikicity.png`}
+              alt=""
+              width="60"
+              height="60"
+              style={{ borderRadius: 60, marginRight: 10 }}
+            />
             <h2
               style={{
                 color: "white",
