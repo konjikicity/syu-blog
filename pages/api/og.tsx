@@ -12,7 +12,7 @@ export default async function ogp(req: NextRequest) {
   const hasTitle = searchParams.has("title");
   const title = hasTitle
     ? searchParams.get("title")?.slice(0, 100)
-    : "ネトゲ廃人からエンジニアブログ";
+    : "syu-blog";
 
   const fontData = await fetchFont(title);
 
