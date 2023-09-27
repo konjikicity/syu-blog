@@ -68,7 +68,7 @@ export default function Post({ post }: Props) {
               </>
             )}
           </div>
-          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit hidden xl:block">
+          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7.7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit hidden xl:block">
             目次
             <nav className="mt-4 toc" />
           </div>

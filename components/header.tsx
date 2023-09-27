@@ -49,14 +49,14 @@ const Header = () => {
   );
 
   return (
-    <Navbar className="bg-[#526D82] border-none sticky top-0 z-10 h-max max-w-full rounded-none py-6 px-4 lg:px-52">
+    <Navbar className="bg-[#526D82] border-none sticky top-0 z-10 h-max max-w-full rounded-none  px-4 lg:px-52">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="/"
           className="text-[#DDE6ED] font-bold mr-4 sm:text-lg cursor-pointer py-1.5"
         >
-          <Image src={LogoImage} alt="logo" width={220} height={80} />
+          <Image src={LogoImage} alt="logo" width={200} height={50} />
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>

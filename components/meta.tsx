@@ -54,7 +54,10 @@ const Meta = ({ title }: Props) => {
           title ? `${baseUrl}/api/og?title=${title}` : `${baseUrl}/api/og`
         }
       />
-      <meta property="og:description" content="syu-blog" />
+      <meta
+        property="og:description"
+        content="元ネトゲ廃人のエンジニアブログです。"
+      />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="og:title" content={title ? title : "syu-blog"} />
       <meta
