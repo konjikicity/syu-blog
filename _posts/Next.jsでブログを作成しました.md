@@ -1,6 +1,6 @@
 ---
 title: "Next.jsでブログを作成しました"
-date: "2023-09-18"
+date: "2023-09-26"
 tags:
   - "next.js"
 ---
@@ -205,6 +205,7 @@ https://zenn.dev/miketako3/articles/519f5fbd1f5042
 - ページネーション
 - snsのshareボタンの追加
 - OGPの設定
+- 目次の作成
 
 上記は別の記事で書こうと思っておりますので、気長にお待ちください....
 

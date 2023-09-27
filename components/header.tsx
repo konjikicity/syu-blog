@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import LogoImage from "../public/logo/logo.png";
 import { useEffect, useState } from "react";
 import { Navbar, Collapse, Typography, IconButton } from "../components/style";
 
@@ -54,7 +56,7 @@ const Header = () => {
           href="/"
           className="text-[#DDE6ED] font-bold mr-4 sm:text-lg cursor-pointer py-1.5"
         >
-          ネトゲ廃人からエンジニアブログ
+          <Image src={LogoImage} alt="logo" width={220} height={80} />
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
