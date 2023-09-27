@@ -56,8 +56,11 @@ const Meta = ({ title }: Props) => {
       />
       <meta property="og:description" content="syu-blog" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="og:title" content={title} />
-      <meta property="og:url" content={`${baseUrl}/posts/${title}`} />
+      <meta property="og:title" content={title ? title : "syu-blog"} />
+      <meta
+        property="og:url"
+        content={title ? `${baseUrl}/posts/${title}` : `${baseUrl}`}
+      />
       <meta property="og:site_name" content="syu-blog" />
       <meta property="og:type" content="blog" />
     </>
