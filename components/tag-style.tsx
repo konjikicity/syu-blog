@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type TagProps = {
   tag: string;
@@ -12,13 +13,13 @@ const TagStyle: React.FC<TagProps> = ({ tag }) => {
   }, [tag]);
 
   return (
-    <a
+    <Link
       href={`/tags/${tag}`}
       className="px-2 py-1 rounded-lg bg-black font-bold text-white transition flex items-center justify-between hover:opacity-50"
     >
       {tagElement}
       {tag}
-    </a>
+    </Link>
   );
 };
 

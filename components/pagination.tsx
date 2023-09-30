@@ -45,45 +45,45 @@ const Pagination = ({ totalCount, currentPage, tag }: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-end gap-4">
-      <Button
-        variant="text"
-        className="flex items-center gap-2"
-        onClick={prev}
-        disabled={active === 1}
-      >
-        <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous
-      </Button>
+    <div className="flex items-center justify-center gap-4">
+      {/* <Button */}
+      {/*   variant="text" */}
+      {/*   className="flex items-center gap-2" */}
+      {/*   onClick={prev} */}
+      {/*   disabled={active === 1} */}
+      {/* > */}
+      {/*   <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous */}
+      {/* </Button> */}
       <div className="flex items-center gap-2">
         {tag === ""
           ? Array.from({ length: maxPages }).map((_, index) => (
-            <Link key={index} href="/page/[page]" as={`/page/${index + 1}`}>
-              <IconButton {...getItemProps(index + 1)}>
-                {index + 1}
-              </IconButton>
-            </Link>
-          ))
+              <Link key={index} href="/page/[page]" as={`/page/${index + 1}`}>
+                <IconButton {...getItemProps(index + 1)}>
+                  {index + 1}
+                </IconButton>
+              </Link>
+            ))
           : Array.from({ length: maxPages }).map((_, index) => (
-            <Link
-              key={index}
-              href="/tags/[tag]/[page]"
-              as={`/tags/${tag}/${index + 1}`}
-            >
-              <IconButton {...getItemProps(index + 1)}>
-                {index + 1}
-              </IconButton>
-            </Link>
-          ))}
+              <Link
+                key={index}
+                href="/tags/[tag]/[page]"
+                as={`/tags/${tag}/${index + 1}`}
+              >
+                <IconButton {...getItemProps(index + 1)}>
+                  {index + 1}
+                </IconButton>
+              </Link>
+            ))}
       </div>
-      <Button
-        variant="text"
-        className="flex items-center gap-2"
-        onClick={next}
-        disabled={active === maxPages}
-      >
-        Next
-        <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
-      </Button>
+      {/* <Button */}
+      {/*   variant="text" */}
+      {/*   className="flex items-center gap-2" */}
+      {/*   onClick={next} */}
+      {/*   disabled={active === maxPages} */}
+      {/* > */}
+      {/*   Next */}
+      {/*   <ArrowRightIcon strokeWidth={2} className="h-4 w-4" /> */}
+      {/* </Button> */}
     </div>
   );
 };
