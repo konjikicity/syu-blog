@@ -34,7 +34,7 @@ const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags, url }) => {
 
   return (
     <div onClick={handleCardClick} className="hover:cursor-pointer">
-      <Card className="text-[#DDE6ED] bg-[#27374D] h-60 sm:h-52 card-previews transform transition-transform duration-300 hover:-translate-y-2">
+      <Card className="text-[#DDE6ED] bg-[#27374D] h-60 hover:scale-110 sm:h-52 card-previews transform transition-transform duration-300 hover:-translate-y-2">
         <CardBody className="w-full h-full flex flex-col justify-between">
           <Typography className="text-xl font-bold">{title}</Typography>
           <div className="mt-auto sm:flex justify-between">
