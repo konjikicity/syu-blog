@@ -47,7 +47,7 @@ export const getStaticProps = async (context: Params) => {
   const tag = context.params.tag;
   const currentPage = parseInt(context.params.index, 10);
 
-  const allPosts = getPostsByTag(tag, ["title", "date", "slug", "tags"]);
+  const allPosts = getPostsByTag(tag, ["title", "date", "slug", "tags", "url"]);
 
   const paginatedPosts = allPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,

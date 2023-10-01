@@ -37,7 +37,13 @@ type Params = {
 };
 
 export const getStaticProps = ({ params }: Params) => {
-  const posts = getPostsByTag(params.tag, ["title", "date", "slug", "tags"]);
+  const posts = getPostsByTag(params.tag, [
+    "title",
+    "date",
+    "slug",
+    "tags",
+    "url",
+  ]);
 
   return {
     props: {

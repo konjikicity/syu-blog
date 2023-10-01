@@ -1,3 +1,5 @@
+"use client";
+
 import PostPreview from "./post-preview";
 import type Post from "../interfaces/post";
 
@@ -11,7 +13,6 @@ const MoreStories = ({ posts, currentPage }: Props) => {
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const currentPosts = posts.slice(startIndex, endIndex); // 現在のページの投稿を取得
-
   return (
     <section>
       <div className="sm:my-12 my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">

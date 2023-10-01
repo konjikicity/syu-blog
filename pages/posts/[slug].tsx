@@ -124,6 +124,7 @@ export async function getStaticProps({ params }: Params) {
     "slug",
     "content",
     "tags",
+    "url",
   ]);
   const content = await markdownToHtml(post.content || "", {
     embedOrigin: "https://embed.zenn.studio",
