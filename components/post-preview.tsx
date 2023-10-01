@@ -1,5 +1,4 @@
 import DateFormatter from "./date-formatter";
-import Link from "next/link";
 import { Card, CardBody, Typography } from "../components/style";
 import TagStyle from "../components/tag-style";
 import React, { useMemo } from "react";
@@ -9,11 +8,20 @@ type PostProps = {
   date: string;
   slug: string;
   tags: string[];
+  url?: string;
 };
 
-const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags }) => {
+const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags, url }) => {
   const handleCardClick = () => {
-    window.location.href = `/posts/${slug}`;
+    const anchor = document.createElement("a");
+    if (url === null) {
+      anchor.href = `/posts/${slug}`;
+    } else {
+      anchor.href = url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer"; // target="_blank"を使用する際のセキュリティ対策として追加
+    }
+    anchor.click();
   };
 
   const renderedTags = useMemo(() => {
@@ -26,7 +34,7 @@ const PostPreview: React.FC<PostProps> = ({ title, date, slug, tags }) => {
 
   return (
     <div onClick={handleCardClick} className="hover:cursor-pointer">
-      <Card className="text-[#DDE6ED] bg-[#27374D] h-52 card-previews transform transition-transform duration-300 hover:-translate-y-2">
+      <Card className="text-[#DDE6ED] bg-[#27374D] h-60 sm:h-52 card-previews transform transition-transform duration-300 hover:-translate-y-2">
         <CardBody className="w-full h-full flex flex-col justify-between">
           <Typography className="text-xl font-bold">{title}</Typography>
           <div className="mt-auto sm:flex justify-between">

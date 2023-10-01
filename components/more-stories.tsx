@@ -22,6 +22,7 @@ const MoreStories = ({ posts, currentPage }: Props) => {
             date={post.date}
             slug={post.slug}
             tags={post.tags}
+            url={post.url ?? null}
           />
         ))}
       </div>

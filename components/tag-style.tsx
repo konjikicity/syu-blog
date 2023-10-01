@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import noteIcon from "../public/icon/note-icon.png";
+import qiitaIcon from "../public/icon/qiita-icon.png";
 
 type TagProps = {
   tag: string;
@@ -39,6 +42,24 @@ const checkTagImgUrl = (tag: string): React.ReactNode => {
     git: <i className="mr-2 devicon-git-plain colored"></i>,
     devTool: <i className="mr-2 fa-solid fa-screwdriver-wrench"></i>,
     日記: <i className="mr-2 fa-solid fa-book"></i>,
+    note記事: (
+      <Image
+        src={noteIcon}
+        alt="note"
+        width={20}
+        height={20}
+        className="mr-2 rounded-full bg-white"
+      />
+    ),
+    Qiita記事: (
+      <Image
+        src={qiitaIcon}
+        alt="note"
+        width={20}
+        height={20}
+        className="mr-2 rounded-full bg-white"
+      />
+    ),
   };
 
   return tagElements[tag] || null;
