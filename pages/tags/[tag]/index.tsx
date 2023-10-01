@@ -18,7 +18,7 @@ export default function Index({ posts, tag, totalCount }: Props) {
     <>
       <Layout>
         <Container>
-          <div className="mt-12 w-1/2 flex items-center justify-start">
+          <div className="mt-12 w-full sm:w-1/2 flex items-center justify-start">
             <TagStyle tag={tag} />
             <p className="pl-2 font-bold text-lg">を含む記事一覧</p>
           </div>
