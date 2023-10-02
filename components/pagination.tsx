@@ -22,25 +22,32 @@ const Pagination = ({ totalCount, currentPage, tag }: Props) => {
     }) as any;
 
   const next = () => {
-    if (active === 5) return;
-    setActive(active + 1);
+    if (active === maxPages) return;
 
-    if (tag === "") {
-      router.push(`/page/${active + 1}`);
-    }
-    if (tag !== "") {
-      router.push(`/tags/${tag}/${active + 1}`);
+    const nextPage = active + 1;
+    if (nextPage !== currentPage) {
+      setActive(nextPage);
+      if (tag === "") {
+        router.push(`/page/${nextPage}`);
+      }
+      if (tag !== "") {
+        router.push(`/tags/${tag}/${nextPage}`);
+      }
     }
   };
 
   const prev = () => {
     if (active === 1) return;
-    setActive(active - 1);
-    if (tag === "") {
-      router.push(`/page/${active - 1}`);
-    }
-    if (tag !== "") {
-      router.push(`/tags/${tag}/${active - 1}`);
+
+    const prevPage = active - 1;
+    if (prevPage !== currentPage) {
+      setActive(prevPage);
+      if (tag === "") {
+        router.push(`/page/${prevPage}`);
+      }
+      if (tag !== "") {
+        router.push(`/tags/${tag}/${prevPage}`);
+      }
     }
   };
 
@@ -56,24 +63,36 @@ const Pagination = ({ totalCount, currentPage, tag }: Props) => {
       {/* </Button> */}
       <div className="flex items-center gap-2">
         {tag === ""
-          ? Array.from({ length: maxPages }).map((_, index) => (
-              <Link key={index} href="/page/[page]" as={`/page/${index + 1}`}>
-                <IconButton {...getItemProps(index + 1)}>
+          ? Array.from({ length: maxPages }).map((_, index) =>
+              currentPage === index + 1 ? (
+                <IconButton {...getItemProps(index + 1)} key={index}>
                   {index + 1}
                 </IconButton>
-              </Link>
-            ))
-          : Array.from({ length: maxPages }).map((_, index) => (
-              <Link
-                key={index}
-                href="/tags/[tag]/[page]"
-                as={`/tags/${tag}/${index + 1}`}
-              >
-                <IconButton {...getItemProps(index + 1)}>
+              ) : (
+                <Link key={index} href="/page/[page]" as={`/page/${index + 1}`}>
+                  <IconButton {...getItemProps(index + 1)}>
+                    {index + 1}
+                  </IconButton>
+                </Link>
+              ),
+            )
+          : Array.from({ length: maxPages }).map((_, index) =>
+              currentPage === index + 1 ? (
+                <IconButton {...getItemProps(index + 1)} key={index}>
                   {index + 1}
                 </IconButton>
-              </Link>
-            ))}
+              ) : (
+                <Link
+                  key={index}
+                  href="/tags/[tag]/[page]"
+                  as={`/tags/${tag}/${index + 1}`}
+                >
+                  <IconButton {...getItemProps(index + 1)}>
+                    {index + 1}
+                  </IconButton>
+                </Link>
+              ),
+            )}
       </div>
       {/* <Button */}
       {/*   variant="text" */}

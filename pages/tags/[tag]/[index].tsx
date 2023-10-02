@@ -74,6 +74,7 @@ export function getStaticPaths() {
       "date",
       "slug",
       "tags",
+      "url",
     ]);
     const totalPages = Math.ceil(allPostsForTag.length / POSTS_PER_PAGE);
 
