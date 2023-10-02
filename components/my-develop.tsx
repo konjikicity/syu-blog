@@ -1,4 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
+import RunteqLogo from "../public/dev/RUNTEQ-Q-A.png";
+import BoitoreLogo from "../public/dev/boitore.png";
 import { Card, CardBody, CardHeader, Typography } from "../components/style";
 
 const MyDevelop = () => {
@@ -12,11 +15,7 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <img
-              className="h-52 sm:h-72"
-              src={`https://res.cloudinary.com/dzlhvpfmo/image/upload/v1695657278/syu-blog/RUNTEQ-Q-A_bxuudv.png`}
-              alt="runteq"
-            />
+            <Image className="h-52 sm:h-72" src={RunteqLogo} alt="runteq" />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
@@ -40,15 +39,11 @@ const MyDevelop = () => {
             color="transparent"
             className="m-0 rounded-none"
           >
-            <img
-              className="h-52 sm:h-72"
-              src={`https://res.cloudinary.com/dzlhvpfmo/image/upload/v1695657284/syu-blog/boitore_d1whcv.png`}
-              alt="boitre"
-            />
+            <Image className="h-52 sm:h-72" src={BoitoreLogo} alt="boitre" />
           </CardHeader>
           <CardBody className="bg-[#27374D]">
             <Typography variant="h4" color="white">
-              boiトレ
+              Boiトレ
             </Typography>
             <Typography
               variant="lead"
