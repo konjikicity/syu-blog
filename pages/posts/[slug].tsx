@@ -5,21 +5,21 @@ import PostContainer from "../../components/post-container";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
+import { getAllPosts, getPostBySlug } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import markdownToHtml from "zenn-markdown-html";
 import type PostType from "../../interfaces/post";
 import tocbot from "tocbot";
 
 import {
-  TwitterShareButton,
-  FacebookShareButton,
-  LineShareButton,
-  HatenaShareButton,
-  TwitterIcon,
   FacebookIcon,
-  LineIcon,
+  FacebookShareButton,
   HatenaIcon,
+  HatenaShareButton,
+  LineIcon,
+  LineShareButton,
+  TwitterIcon,
+  TwitterShareButton,
 } from "react-share";
 
 type Props = {
@@ -53,9 +53,7 @@ export default function Post({ post }: Props) {
       <PostContainer>
         <div className="relative xl:grid xl:grid-cols-10 xl:gap-3">
           <div className="bg-[#27374D] xl:col-span-8 rounded-lg p-4 my-4 sm:my-6 sm:p-12">
-            {router.isFallback ? (
-              <PostTitle>Loading…</PostTitle>
-            ) : (
+            {router.isFallback ? <PostTitle>Loading…</PostTitle> : (
               <>
                 <article>
                   <PostHeader
@@ -75,7 +73,7 @@ export default function Post({ post }: Props) {
 
           <div className="flex justify-center sm:justify-start">
             <TwitterShareButton
-              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
+              url={`${baseUrl}/posts/${post.slug}`}
               title={post.title}
               className="mr-4"
             >
@@ -83,7 +81,7 @@ export default function Post({ post }: Props) {
             </TwitterShareButton>
 
             <FacebookShareButton
-              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
+              url={`${baseUrl}/posts/${post.slug}`}
               quote={post.title}
               className="mr-4"
             >
@@ -91,7 +89,7 @@ export default function Post({ post }: Props) {
             </FacebookShareButton>
 
             <LineShareButton
-              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
+              url={`${baseUrl}/posts/${post.slug}`}
               title={post.title}
               className="mr-4"
             >
@@ -99,7 +97,7 @@ export default function Post({ post }: Props) {
             </LineShareButton>
 
             <HatenaShareButton
-              url={`${baseUrl}/posts/${encodeURIComponent(post.title)}`}
+              url={`${baseUrl}/posts/${post.slug}`}
               title={post.title}
             >
               <HatenaIcon size={40} round={true} />
