@@ -58,7 +58,7 @@ const Meta = ({ title }: Props) => {
         property="og:description"
         content="元ネトゲ廃人のエンジニアブログです。"
       />
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta property="og:title" content={title ? title : "syu-blog"} />
       <meta
         property="og:url"
