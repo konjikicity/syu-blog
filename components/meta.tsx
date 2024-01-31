@@ -48,18 +48,18 @@ const Meta = ({ title }: Props) => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta
         property="og:image"
         content={
           title ? `${baseUrl}/api/og?title=${title}` : `${baseUrl}/api/og`
         }
       />
+      <meta property="og:title" content={title ? title : "syu-blog"} />
       <meta
         property="og:description"
         content="元ネトゲ廃人のエンジニアブログです。"
       />
-      <meta name="twitter:card" content="summary" />
-      <meta property="og:title" content={title ? title : "syu-blog"} />
       <meta
         property="og:url"
         content={title ? `${baseUrl}/posts/${title}` : `${baseUrl}`}
