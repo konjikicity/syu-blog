@@ -75,7 +75,7 @@ const Profile = () => {
                   <div className="flex items-center">
                     <img
                       className="mt-2 mr-4 h-14 w-14"
-                      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain-wordmark.svg"
+                      src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg"
                     />
                     <img
                       className="mt-2 h-14 w-14"
