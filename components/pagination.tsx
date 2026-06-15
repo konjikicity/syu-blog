@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router"; // 追加
 import Link from "next/link";
+
 type Props = {
   totalCount: number;
   currentPage: number;
@@ -10,99 +8,66 @@ type Props = {
 };
 
 const Pagination = ({ totalCount, currentPage, tag }: Props) => {
-  const router = useRouter();
-  const [active, setActive] = useState(currentPage);
   const maxPages = Math.ceil(totalCount / 6);
 
-  const getItemProps = (index: number) =>
-    ({
-      variant: active === index ? "filled" : "text",
-      color: "gray",
-      onClick: () => setActive(index),
-    }) as any;
-
-  const next = () => {
-    if (active === maxPages) return;
-
-    const nextPage = active + 1;
-    if (nextPage !== currentPage) {
-      setActive(nextPage);
-      if (tag === "") {
-        router.push(`/page/${nextPage}`);
-      }
-      if (tag !== "") {
-        router.push(`/tags/${tag}/${nextPage}`);
-      }
-    }
-  };
-
-  const prev = () => {
-    if (active === 1) return;
-
-    const prevPage = active - 1;
-    if (prevPage !== currentPage) {
-      setActive(prevPage);
-      if (tag === "") {
-        router.push(`/page/${prevPage}`);
-      }
-      if (tag !== "") {
-        router.push(`/tags/${tag}/${prevPage}`);
-      }
-    }
-  };
+  const pageHref = (page: number) =>
+    tag === "" ? `/page/${page}` : `/tags/${tag}/${page}`;
 
   return (
-    <div className="flex items-center justify-center gap-4">
-      {/* <Button */}
-      {/*   variant="text" */}
-      {/*   className="flex items-center gap-2" */}
-      {/*   onClick={prev} */}
-      {/*   disabled={active === 1} */}
-      {/* > */}
-      {/*   <ArrowLeftIcon strokeWidth={2} className="h-4 w-4" /> Previous */}
-      {/* </Button> */}
-      <div className="flex items-center gap-2">
-        {tag === ""
-          ? Array.from({ length: maxPages }).map((_, index) =>
-              currentPage === index + 1 ? (
-                <IconButton {...getItemProps(index + 1)} key={index}>
-                  {index + 1}
-                </IconButton>
-              ) : (
-                <Link key={index} href="/page/[page]" as={`/page/${index + 1}`}>
-                  <IconButton {...getItemProps(index + 1)}>
-                    {index + 1}
-                  </IconButton>
-                </Link>
-              ),
-            )
-          : Array.from({ length: maxPages }).map((_, index) =>
-              currentPage === index + 1 ? (
-                <IconButton {...getItemProps(index + 1)} key={index}>
-                  {index + 1}
-                </IconButton>
-              ) : (
-                <Link
-                  key={index}
-                  href="/tags/[tag]/[page]"
-                  as={`/tags/${tag}/${index + 1}`}
-                >
-                  <IconButton {...getItemProps(index + 1)}>
-                    {index + 1}
-                  </IconButton>
-                </Link>
-              ),
-            )}
+    <div className="flex items-center justify-center gap-2 py-8">
+      {currentPage > 1 ? (
+        <Link
+          href={pageHref(currentPage - 1)}
+          className="inline-flex items-center gap-1 px-3 py-2 border border-border-strong text-xs tracking-wide text-fg-muted hover:bg-fg hover:text-fg-inverse transition-colors"
+        >
+          <ArrowLeftIcon className="h-3.5 w-3.5" />
+          Prev
+        </Link>
+      ) : (
+        <span className="inline-flex items-center gap-1 px-3 py-2 border border-border text-xs tracking-wide text-fg-subtle cursor-not-allowed opacity-40">
+          <ArrowLeftIcon className="h-3.5 w-3.5" />
+          Prev
+        </span>
+      )}
+
+      <div className="flex items-center gap-1">
+        {Array.from({ length: maxPages }).map((_, index) => {
+          const page = index + 1;
+          const isCurrent = currentPage === page;
+          return isCurrent ? (
+            <span
+              key={page}
+              aria-current="page"
+              className="inline-flex items-center justify-center w-9 h-9 text-xs font-bold bg-fg text-fg-inverse border border-fg"
+            >
+              {page}
+            </span>
+          ) : (
+            <Link
+              key={page}
+              href={pageHref(page)}
+              className="inline-flex items-center justify-center w-9 h-9 text-xs border border-border text-fg-muted hover:border-border-strong hover:text-fg transition-colors"
+            >
+              {page}
+            </Link>
+          );
+        })}
       </div>
-      {/* <Button */}
-      {/*   variant="text" */}
-      {/*   className="flex items-center gap-2" */}
-      {/*   onClick={next} */}
-      {/*   disabled={active === maxPages} */}
-      {/* > */}
-      {/*   Next */}
-      {/*   <ArrowRightIcon strokeWidth={2} className="h-4 w-4" /> */}
-      {/* </Button> */}
+
+      {currentPage < maxPages ? (
+        <Link
+          href={pageHref(currentPage + 1)}
+          className="inline-flex items-center gap-1 px-3 py-2 border border-border-strong text-xs tracking-wide text-fg-muted hover:bg-fg hover:text-fg-inverse transition-colors"
+        >
+          Next
+          <ArrowRightIcon className="h-3.5 w-3.5" />
+        </Link>
+      ) : (
+        <span className="inline-flex items-center gap-1 px-3 py-2 border border-border text-xs tracking-wide text-fg-subtle cursor-not-allowed opacity-40">
+          Next
+          <ArrowRightIcon className="h-3.5 w-3.5" />
+        </span>
+      )}
     </div>
   );
 };

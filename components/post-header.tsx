@@ -9,15 +9,15 @@ type Props = {
 
 const PostHeader = ({ title, tags, date }: Props) => {
   return (
-    <div className="text-center text-white">
-      <p className="text-2xl sm:text-4xl font-bold">{title}</p>
-      <ul className="flex items-center justify-center gap-x-2 sm:px-20">
+    <div className="mb-8 pb-6 border-b border-border-strong">
+      <h1 className="text-2xl sm:text-3xl font-black text-fg leading-tight tracking-tight mb-4">
+        {title}
+      </h1>
+      <div className="flex items-center flex-wrap gap-2 mb-3">
         {tags.map((tag) => (
-          <li key={tag} className="font-bold py-6">
-            <TagStyle tag={tag} />
-          </li>
+          <TagStyle key={tag} tag={tag} />
         ))}
-      </ul>
+      </div>
       <DateFormatter dateString={date} />
     </div>
   );

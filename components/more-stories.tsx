@@ -1,29 +1,24 @@
-"use client";
-
 import PostPreview from "./post-preview";
-import type Post from "../interfaces/post";
+import type { Post } from "../lib/microcms";
 
 type Props = {
   posts: Post[];
-  currentPage: number; // 現在のページ番号を追加
 };
 
-const MoreStories = ({ posts, currentPage }: Props) => {
-  const postsPerPage = 6;
-  const startIndex = (currentPage - 1) * postsPerPage;
-  const endIndex = startIndex + postsPerPage;
-  const currentPosts = posts.slice(startIndex, endIndex); // 現在のページの投稿を取得
+const MoreStories = ({ posts }: Props) => {
   return (
     <section>
-      <div className="sm:my-12 my-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
-        {currentPosts.map((post) => (
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 my-8">
+        {posts.map((post) => (
           <PostPreview
             key={post.slug}
             title={post.title}
             date={post.date}
             slug={post.slug}
             tags={post.tags}
-            url={post.url ?? null}
+            url={post.url}
+            coverImage={post.coverImage}
+            excerpt={post.excerpt}
           />
         ))}
       </div>

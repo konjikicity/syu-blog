@@ -1,14 +1,9 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-import ErrorPage from "next/error";
 import PostContainer from "../../components/post-container";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import Layout from "../../components/layout";
-import { getAllPosts, getPostBySlug } from "../../lib/api";
-import PostTitle from "../../components/post-title";
-import markdownToHtml from "zenn-markdown-html";
-import type PostType from "../../interfaces/post";
+import { getPostBySlug, getAllSlugs } from "../../lib/microcms";
 import tocbot from "tocbot";
 
 import {
@@ -23,17 +18,16 @@ import {
 } from "react-share";
 
 type Props = {
-  post: PostType;
-  morePosts: PostType[];
-  preview?: boolean;
+  post: {
+    slug: string;
+    title: string;
+    date: string;
+    tags: string[];
+    htmlContent: string;
+  };
 };
 
 export default function Post({ post }: Props) {
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   useEffect(() => {
@@ -44,63 +38,37 @@ export default function Post({ post }: Props) {
       headingsOffset: 100,
       scrollSmoothOffset: -100,
     });
-
     return () => tocbot.destroy();
   }, []);
 
   return (
-    <Layout title={post.title}>
+    <Layout title={post.title} slug={post.slug} isPost>
       <PostContainer>
-        <div className="relative xl:grid xl:grid-cols-10 xl:gap-3">
-          <div className="bg-[#27374D] xl:col-span-8 rounded-lg p-4 my-4 sm:my-6 sm:p-12">
-            {router.isFallback ? <PostTitle>Loading…</PostTitle> : (
-              <>
-                <article>
-                  <PostHeader
-                    title={post.title}
-                    date={post.date}
-                    tags={post.tags}
-                  />
-                  <PostBody content={post.content} />
-                </article>
-              </>
-            )}
-          </div>
-          <div className="sticky pt-6 px-4 text-[0.8rem] top-[7.7rem] bg-[#27374D] text-white rounded-lg col-span-2 h-fit hidden xl:block">
-            目次
-            <nav className="mt-4 toc" />
+        <div className="relative xl:grid xl:grid-cols-10 xl:gap-6 py-8">
+          <div className="bg-white border border-border-strong xl:col-span-8 p-6 sm:p-10">
+            <article>
+              <PostHeader title={post.title} date={post.date} tags={post.tags} />
+              <PostBody content={post.htmlContent} />
+            </article>
           </div>
 
-          <div className="flex justify-center sm:justify-start">
-            <TwitterShareButton
-              url={`${baseUrl}/posts/${post.slug}`}
-              title={post.title}
-              className="mr-4"
-            >
-              <TwitterIcon size={40} round={true} />
+          <div className="sticky pt-6 px-4 text-sm top-[4.5rem] bg-white border border-border-strong text-fg-muted col-span-2 h-fit hidden xl:block">
+            <p className="font-semibold text-fg text-xs tracking-widest uppercase mb-2">目次</p>
+            <nav className="mt-2 toc" />
+          </div>
+
+          <div className="xl:col-span-8 flex justify-center sm:justify-start gap-3 mt-6">
+            <TwitterShareButton url={`${baseUrl}/posts/${post.slug}`} title={post.title}>
+              <TwitterIcon size={32} round />
             </TwitterShareButton>
-
-            <FacebookShareButton
-              url={`${baseUrl}/posts/${post.slug}`}
-              quote={post.title}
-              className="mr-4"
-            >
-              <FacebookIcon size={40} round={true} />
+            <FacebookShareButton url={`${baseUrl}/posts/${post.slug}`} quote={post.title}>
+              <FacebookIcon size={32} round />
             </FacebookShareButton>
-
-            <LineShareButton
-              url={`${baseUrl}/posts/${post.slug}`}
-              title={post.title}
-              className="mr-4"
-            >
-              <LineIcon size={40} round={true} />
+            <LineShareButton url={`${baseUrl}/posts/${post.slug}`} title={post.title}>
+              <LineIcon size={32} round />
             </LineShareButton>
-
-            <HatenaShareButton
-              url={`${baseUrl}/posts/${post.slug}`}
-              title={post.title}
-            >
-              <HatenaIcon size={40} round={true} />
+            <HatenaShareButton url={`${baseUrl}/posts/${post.slug}`} title={post.title}>
+              <HatenaIcon size={32} round />
             </HatenaShareButton>
           </div>
         </div>
@@ -109,46 +77,35 @@ export default function Post({ post }: Props) {
   );
 }
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "content",
-    "tags",
-    "url",
-  ]);
-  const content = await markdownToHtml(post.content || "", {
-    embedOrigin: "https://embed.zenn.studio",
-  });
-
+export async function getStaticProps({
+  params,
+  preview,
+  previewData,
+}: {
+  params: { slug: string };
+  preview?: boolean;
+  previewData?: { draftKey?: string };
+}) {
+  const draftKey = preview ? previewData?.draftKey : undefined;
+  const post = await getPostBySlug(params.slug, draftKey);
   return {
     props: {
       post: {
-        ...post,
-        content,
+        slug: post.slug,
+        title: post.title,
+        date: post.date,
+        tags: post.tags,
+        htmlContent: post.htmlContent,
       },
     },
+    ...(preview ? {} : { revalidate: 60 }),
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
-
+  const slugs = await getAllSlugs();
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
-    fallback: false,
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: "blocking",
   };
 }

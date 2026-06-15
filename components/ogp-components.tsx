@@ -6,9 +6,8 @@ const OgpComponents = ({ title }: Props) => {
   return (
     <div
       style={{
-        fontSize: 50,
         backgroundImage: `url(${`data:image/svg+xml,${encodeURIComponent(
-          '<svg height="600" viewBox="0 0 900 600" width="900" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h900v600h-900z" fill="#001829"/><g fill="none" stroke="#297ea6" stroke-width="2"><path d="m0-147 127.3 73.5v147l-127.3 73.5-127.3-73.5v-147z" transform="translate(706 316)"/><path d="m0-131 113.4 65.5v131l-113.4 65.5-113.4-65.5v-131z" transform="translate(141 106)"/><path d="m0-127 110 63.5v127l-110 63.5-110-63.5v-127z" transform="translate(252 581)"/></g></svg>',
+          '<svg height="600" viewBox="0 0 900 600" width="900" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h900v600h-900z" fill="#0f172a"/><g fill="none" stroke="#2563eb" stroke-width="1.5"><path d="m0-147 127.3 73.5v147l-127.3 73.5-127.3-73.5v-147z" transform="translate(706 316)"/><path d="m0-131 113.4 65.5v131l-113.4 65.5-113.4-65.5v-131z" transform="translate(141 106)"/><path d="m0-127 110 63.5v127l-110 63.5-110-63.5v-127z" transform="translate(252 581)"/></g></svg>',
         )}`})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -21,16 +20,16 @@ const OgpComponents = ({ title }: Props) => {
         color: "white",
         textAlign: "center",
         padding: "0px 150px",
-        textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         position: "relative",
       }}
     >
       <h2
         style={{
           width: "100%",
-          color: "white",
-          fontSize: 60,
-          textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+          color: "#e2e8f0",
+          fontSize: 56,
+          textShadow: "0px 2px 8px rgba(0, 0, 0, 0.4)",
+          lineHeight: 1.4,
         }}
       >
         {title}
@@ -40,32 +39,27 @@ const OgpComponents = ({ title }: Props) => {
           display: "flex",
           position: "absolute",
           width: "100%",
-          bottom: 0,
+          bottom: 24,
           justifyContent: "flex-end",
+          paddingRight: 32,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img
-            src={`https://github.com/konjikicity.png`}
-            alt=""
-            width="60"
-            height="60"
-            style={{ borderRadius: 60, marginRight: 10 }}
+            src="https://github.com/konjikicity.png"
+            alt="Syu Onoda"
+            width="48"
+            height="48"
+            style={{ borderRadius: 48 }}
           />
-          <h2
+          <span
             style={{
-              color: "white",
-              fontSize: 40,
-              textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              color: "#94a3b8",
+              fontSize: 32,
             }}
           >
             @konjikicity
-          </h2>
+          </span>
         </div>
       </div>
     </div>

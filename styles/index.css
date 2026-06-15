@@ -2,13 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Noto Sans JP", sans-serif !important;
+@layer base {
+  body {
+    @apply bg-bg text-fg antialiased;
+  }
 }
 
 .znc code,
 .znc pre {
-  background: #333 !important;
+  background: #111111 !important;
+  color: #f0f0f0 !important;
+  border-radius: 4px;
+}
+
+.znc a {
+  color: #111111;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.znc blockquote {
+  border-left: 3px solid #111111;
+  background: #F0F0F0;
+  color: #555555;
 }
 
 .toc ol > li {
@@ -25,13 +41,18 @@ body {
 }
 
 .toc a {
-  &.is-active-link {
-    text-decoration: underline;
-  }
+  color: #555555;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.toc a.is-active-link {
+  text-decoration: underline;
+  color: #111111;
+  font-weight: 600;
+}
+
+.toc a:hover {
+  text-decoration: underline;
+  color: #111111;
 }
 
 .toc ol {

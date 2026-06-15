@@ -5,8 +5,12 @@ type Props = {
 };
 
 const DateFormatter = ({ dateString }: Props) => {
-  const date = moment(dateString).format("YYYY年MM月DD日");
-  return <time>{date}</time>;
+  const date = moment(dateString).format("YYYY.MM.DD");
+  return (
+    <time className="text-xs text-fg-subtle tracking-wider">
+      {date}
+    </time>
+  );
 };
 
 export default DateFormatter;

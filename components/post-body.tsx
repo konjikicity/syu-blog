@@ -4,7 +4,7 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className="mx-auto znc text-[#DDE6ED] ">
+    <div className="mx-auto znc text-fg">
       <div className="body" dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );

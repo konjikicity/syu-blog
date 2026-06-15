@@ -1,9 +1,17 @@
 type Props = {
   title?: string;
+  slug?: string;
+  isPost?: boolean;
 };
 
-const Meta = ({ title }: Props) => {
+const Meta = ({ title, slug, isPost }: Props) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const ogUrl = isPost && slug ? `${baseUrl}/posts/${slug}` : baseUrl;
+  const ogType = isPost ? "article" : "website";
+  const ogImage = title
+    ? `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
+    : `${baseUrl}/api/og`;
+
   return (
     <>
       <link
@@ -33,12 +41,6 @@ const Meta = ({ title }: Props) => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto:ital,wght@0,500;0,700;1,400&display=swap"
-        rel="stylesheet"
-      />
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
@@ -46,26 +48,17 @@ const Meta = ({ title }: Props) => {
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+      <meta name="theme-color" content="#fff" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        property="og:image"
-        content={
-          title ? `${baseUrl}/api/og?title=${title}` : `${baseUrl}/api/og`
-        }
-      />
-      <meta property="og:title" content={title ? title : "syu-blog"} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:title" content={title ?? "syu-blog"} />
       <meta
         property="og:description"
         content="元ネトゲ廃人のエンジニアブログです。"
       />
-      <meta
-        property="og:url"
-        content={title ? `${baseUrl}/posts/${title}` : `${baseUrl}`}
-      />
+      <meta property="og:url" content={ogUrl} />
       <meta property="og:site_name" content="syu-blog" />
-      <meta property="og:type" content="blog" />
+      <meta property="og:type" content={ogType} />
     </>
   );
 };
