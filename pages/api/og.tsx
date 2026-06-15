@@ -14,7 +14,8 @@ export default async function ogp(req: NextRequest) {
     ? searchParams.get("title")?.slice(0, 100)
     : "syu-blog";
 
-  const fontData = await fetchFont(title);
+  const STATIC_OGP_TEXT = "SYU BLOG 元ネトゲ廃人のエンジニアブログ @konjikicity";
+  const fontData = await fetchFont(`${title ?? ""}${STATIC_OGP_TEXT}`);
 
   return new ImageResponse(<OgpComponents title={title} />, {
     width: 1200,
