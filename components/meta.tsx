@@ -2,15 +2,24 @@ type Props = {
   title?: string;
   slug?: string;
   isPost?: boolean;
+  coverImage?: string;
 };
 
-const Meta = ({ title, slug, isPost }: Props) => {
+const Meta = ({ title, slug, isPost, coverImage }: Props) => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const ogUrl = isPost && slug ? `${baseUrl}/posts/${slug}` : baseUrl;
   const ogType = isPost ? "article" : "website";
-  const ogImage = title
-    ? `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
-    : `${baseUrl}/api/og`;
+  const resolvedCoverImage =
+    isPost && coverImage
+      ? /^https?:\/\//.test(coverImage)
+        ? coverImage
+        : `${baseUrl}${coverImage}`
+      : null;
+  const ogImage =
+    resolvedCoverImage ??
+    (title
+      ? `${baseUrl}/api/og?title=${encodeURIComponent(title)}`
+      : `${baseUrl}/api/og`);
 
   return (
     <>

@@ -23,6 +23,7 @@ type Props = {
     title: string;
     date: string;
     tags: string[];
+    coverImage: string;
     htmlContent: string;
   };
 };
@@ -42,7 +43,7 @@ export default function Post({ post }: Props) {
   }, []);
 
   return (
-    <Layout title={post.title} slug={post.slug} isPost>
+    <Layout title={post.title} slug={post.slug} isPost coverImage={post.coverImage}>
       <PostContainer>
         <div className="relative xl:grid xl:grid-cols-10 xl:gap-6 py-8">
           <div className="bg-white border border-border-strong xl:col-span-8 p-6 sm:p-10">
@@ -95,6 +96,7 @@ export async function getStaticProps({
         title: post.title,
         date: post.date,
         tags: post.tags,
+        coverImage: post.coverImage,
         htmlContent: post.htmlContent,
       },
     },

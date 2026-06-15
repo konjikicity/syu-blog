@@ -3,48 +3,82 @@ type Props = {
 };
 
 const OgpComponents = ({ title }: Props) => {
+  const isSiteTop = !title || title === "syu-blog";
+  const displayTitle = isSiteTop ? "SYU BLOG" : title;
+
   return (
     <div
       style={{
-        backgroundImage: `url(${`data:image/svg+xml,${encodeURIComponent(
-          '<svg height="600" viewBox="0 0 900 600" width="900" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h900v600h-900z" fill="#0f172a"/><g fill="none" stroke="#2563eb" stroke-width="1.5"><path d="m0-147 127.3 73.5v147l-127.3 73.5-127.3-73.5v-147z" transform="translate(706 316)"/><path d="m0-131 113.4 65.5v131l-113.4 65.5-113.4-65.5v-131z" transform="translate(141 106)"/><path d="m0-127 110 63.5v127l-110 63.5-110-63.5v-127z" transform="translate(252 581)"/></g></svg>',
-        )}`})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundSize: "100% 100%",
         width: "100%",
         height: "100%",
+        background: "#F8F8F8",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "white",
-        textAlign: "center",
-        padding: "0px 150px",
+        flexDirection: "column",
         position: "relative",
+        fontFamily: "NotoSansJP, sans-serif",
       }}
     >
-      <h2
-        style={{
-          width: "100%",
-          color: "#e2e8f0",
-          fontSize: 56,
-          textShadow: "0px 2px 8px rgba(0, 0, 0, 0.4)",
-          lineHeight: 1.4,
-        }}
-      >
-        {title}
-      </h2>
       <div
         style={{
-          display: "flex",
-          position: "absolute",
           width: "100%",
-          bottom: 24,
-          justifyContent: "flex-end",
-          paddingRight: 32,
+          height: 16,
+          background: "#111111",
+        }}
+      />
+
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          padding: "0 80px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <span
+          style={{
+            color: "#555555",
+            fontSize: 24,
+            letterSpacing: 6,
+            marginBottom: 32,
+          }}
+        >
+          SYU BLOG
+        </span>
+        <h2
+          style={{
+            color: "#111111",
+            fontSize: isSiteTop ? 96 : 64,
+            fontWeight: 700,
+            lineHeight: 1.3,
+            margin: 0,
+            letterSpacing: isSiteTop ? 4 : 0,
+          }}
+        >
+          {displayTitle}
+        </h2>
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          padding: "24px 80px",
+          borderTop: "1px solid #D8D8D8",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <span
+          style={{
+            color: "#555555",
+            fontSize: 24,
+          }}
+        >
+          元ネトゲ廃人のエンジニアブログ
+        </span>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <img
             src="https://github.com/konjikicity.png"
             alt="Syu Onoda"
@@ -54,8 +88,8 @@ const OgpComponents = ({ title }: Props) => {
           />
           <span
             style={{
-              color: "#94a3b8",
-              fontSize: 32,
+              color: "#111111",
+              fontSize: 24,
             }}
           >
             @konjikicity

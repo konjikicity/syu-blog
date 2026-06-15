@@ -8,14 +8,15 @@ type Props = {
   title?: string;
   slug?: string;
   isPost?: boolean;
+  coverImage?: string;
 };
 
-const Layout = ({ children, title, slug, isPost }: Props) => {
+const Layout = ({ children, title, slug, isPost, coverImage }: Props) => {
   return (
     <>
       <Head>
         <title>{title ? `${title} | syu-blog` : "syu-blog"}</title>
-        <Meta title={title} slug={slug} isPost={isPost} />
+        <Meta title={title} slug={slug} isPost={isPost} coverImage={coverImage} />
       </Head>
       <Header />
       <div className="min-h-screen mb-12">
